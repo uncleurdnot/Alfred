@@ -562,7 +562,6 @@ async def badge(ctx, name=None, character=None):
                 value=f"`{PREFIX}badge update` has a few mod-only commands as well.  \nThe following fields can be updated if invoked by someone with the moderator role.\n\n**pp** - Sets the character's PP.\nGenerally you should be using `{PREFIX}character addpp CHARACTER PP`, but this is available in case you do the final calculations manually.\n**pl** - Sets the character's Power Level.\n**alignment** - Sets the character's alignment.  This should only ever be `Hero`, `Neutral`, or `Villain`",
                 inline=False)
             await ctx.author.send(embed=mod_embed)
-            return
         await ctx.send(embed=embed)
         return
     if character is None:
