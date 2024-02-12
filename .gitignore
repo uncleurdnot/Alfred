@@ -1,3 +1,12 @@
+# Secrets
+*secret*
+
+#nohup
+*nohup*
+
+#json files
+*.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
