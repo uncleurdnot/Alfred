@@ -22,7 +22,7 @@ CHARACTER_CHANNEL_ID =
 * `CHARACTER_CHANNEL_ID`: The ID for the server forum where characters are stored.
 
 
-This bot was developed for (https://discord.gg/jdEYWRA4h7)[Titanium Comics], a Mutants and Masterminds 3e server.
+This bot was developed for [TitaniumComics](https://discord.gg/jdEYWRA4h7), a Mutants and Masterminds 3e server.
 
 # Bot Functionality
 ![image](https://github.com/uncleurdnot/Alfred/assets/20001428/9b794996-4905-41ca-9942-6fd1dbaea2f0)
