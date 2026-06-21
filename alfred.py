@@ -340,6 +340,13 @@ async def find_chars_from_user(user_id):
     return res[str(user_id)]
 
 
+async def get_character_limit(user_id):
+    chars = await find_chars_from_user(user_id)
+    earned_pp = sum(max(0, int(char['pp']) - PP_DEFAULT) for char in chars)
+    bonus_slots = earned_pp // 50
+    return CHARACTER_LIMIT + bonus_slots
+
+
 async def add_character(character):
     global ROSTER
     ROSTER[character['name']] = character
@@ -663,11 +670,9 @@ async def create(ctx):
 
     # Check character limits
     ccount = await find_chars_from_user(ctx.channel.owner.id)
-    if len(ccount) == CHARACTER_LIMIT:
-        await ctx.send(f"Error: You currently have {len(ccount)} characters which the server limit of **{CHARACTER_LIMIT}**")
-        return
-    elif len(ccount) > CHARACTER_LIMIT:
-        await ctx.send(f"Error: You currently have {len(ccount)} characters which is more than the server limit of **{CHARACTER_LIMIT}**")
+    limit = await get_character_limit(ctx.channel.owner.id)
+    if len(ccount) >= limit:
+        await ctx.send(f"Error: {ctx.channel.owner.mention} currently has {len(ccount)} character(s), which meets or exceeds their allowed limit of **{limit}** (base {CHARACTER_LIMIT} + bonus slots from earned PP).")
         return
 
     # Ensure this is being run as a thread in the proper channel
