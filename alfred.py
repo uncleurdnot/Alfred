@@ -781,6 +781,8 @@ async def delete(ctx, character=None):
         return m.channel == ctx.channel
     try:
         msg = await client.wait_for('message', timeout=15, check=check)
+        print(msg.content)
+        print(del_char["name"])
         if (msg.content != del_char["name"]):
             await ctx.send("Incorrect name.")
             return
